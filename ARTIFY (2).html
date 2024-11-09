@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Artify store</title>
+    <style> 
+    /* Hover effect for enlarging image */
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.1); /* Enlarge image slightly on hover */
+}
+
+/* Fullscreen preview styling */
+#image-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#image-preview img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+}
+
+#image-preview:target {
+    display: flex;
+}
+
+    .featured-products {
+    padding: 20px;
+    background-color: #f0f4fa;
+    text-align: center;
+}
+.featured-products h2 {
+    margin-bottom: 20px;
+}
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);;
+    gap: 20px;
+    justify-items: center;
+}
+
+.product-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 200px;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #555;
+}
+
+.price {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.stars {
+    font-size: 1em;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.shop-btn {
+    background-color: rgb(255, 52, 52);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.shop-btn:hover {
+    background-color: black;
+}
+
+    body{
+        font-family: "Josefin Sans", sans-serif;
+            font-weight: 400; 
+            font-style: normal;
+          margin:0
+    }
+    .header{
+        background-color:#ffffff;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 50px;
+    }
+    .header-links a{
+        color: rgb(0, 0, 0);
+        padding: 0 25px;
+        text-decoration: none;
+        border-radius: 15px;
+    }
+    .header-links a:hover {
+    background-color: rgb(175, 198, 255);
+    color: white;
+}
+.header-links button{
+    background-color: rgb(255, 52, 52);
+    color: white;
+    padding: 5PX 15px;
+    border: 0;
+    border-radius: 15px;
+}
+.btn:hover {
+    background-color: black;
+}
+    .logo{
+        width: 200px;
+    }
+
+.landing-page {
+    background-color: #D7E5F4;
+    display: flex;
+    padding: 50px 50px;
+    align-items: center;
+    border-radius: 50px 50px 60px;
+}
+
+.image {
+    width: 50%;
+    text-align: right;
+}
+.image img {
+    width: 100%;      
+    max-width: 500px; 
+    height: auto;
+}
+.search input{
+    border-radius: 50px;
+    border: none;
+    height: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.search button{
+    position: absolute;
+    left: 200px;
+}
+.btn{
+    background-color: rgb(255, 52, 52);
+    color: white;
+    padding: 5PX 15px;
+    border: 0;
+    border-radius: 15px;
+    height: 30px;
+}
+.featured-products {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f4fa;
+}
+.product-category {
+    display: inline-block;
+    width: 150px;
+    margin: 20px;
+}
+.product-category img {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    object-fit: cover; 
+    transition: transform 0.3s ease; 
+}
+
+
+.product-category img:hover,
+.product-category img:active {
+    transform: scale(1.1); 
+    cursor: pointer;
+}
+}
+.footer {
+    background-color: #f0f4fa;
+    color: rgb(0, 0, 0);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-about, .footer-links, .footer-social {
+    flex: 1;
+    margin: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    color: #ff5252;
+}
+
+.footer-social .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: rgb(1, 1, 1);
+}
+
+.footer-social .social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 14px;
+}
+    
+</style>
+    </style>
+</head>
+<body>
+    <!-- Fullscreen image preview -->
+<div id="image-preview">
+    <img id="preview-img" src="" alt="Preview Image">
+</div>
+
+    <div class="header">
+        <img class="logo" src="file:///C:/Users/ACER/Downloads/logo%20A.png">
+        <div class="header-links">
+            <a href="#">Home</a>
+            <a href="#">Our shop</a>
+            <a href="#">Contact</a>
+            <a href="#">About</a>
+            <button class="btn">Sign in </button>
+        </div>
+    </div>
+
+   <!-- landing-page -->
+
+<div class="landing-page">
+    <div class="text content">
+        <h2 span> Welcome to Artify !</h2 span>
+
+            <h2>Your Creative Digital Hub</h2>
+            <p>At Artify, we believe that art is more than just visuals,it's an experience.</p>
+           <p> We're passionate about offering high-quality digital products to spark creativity in every project.</p> 
+            
+            <div class="search">
+                <input placeholder="Type"/>
+                <button class="btn"> search</button>
+            
+            </div>
+    </div>
+    
+    <div class="image"> 
+        <img src="https://i.pinimg.com/originals/63/4a/48/634a489c8691f882cd17d3f8c9d3d1f4.gif">
+    </div>
+</div>
+<div class="featured-products">
+    <h2>Explore Our Categories</h2>
+    <div class="product-category">
+        <img src="file:///C:/Users/ACER/Downloads/Enjoy%20every%20moment%20printable%20sticker%20%20%20(1).png" alt="Stickers">
+        <p>Stickers</p>
+        <button class="btn">Shop Now</button>
+    </div>
+    <div class="product-category">
+        <img src="file:///C:/Users/ACER/Downloads/White%20Picture%20Frame%20Mockup%20Instagram%20Post.png" alt="Wall Art">
+        <p>Wall Art</p>
+        <button class="btn">Shop Now</button>
+    </div>
+    <div class="product-category">
+        <img src="file:///C:/Users/ACER/Downloads/White%20and%20Black%20Minimalist%20T-Shirt%20Mockup%20Instagram%20Post.png" alt="T-shirt Designs">
+        <p>T-shirt Designs</p>
+        <button class="btn">Shop Now</button>
+    </div>
+    <div class="product-category">
+        <img src="file:///C:/Users/ACER/Downloads/Blank%20Notebook%20Self%20Reminder%20Quote%20Instagram%20Post.png" alt="Notebooks">
+        <p>Notebooks</p>
+        <button class="btn">Shop Now</button>
+    </div>
+
+<!-- Explore Our Categories -->
+<div class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="product-grid"> 
+        
+
+        <!-- Sticker Pack -->
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/Navy%20and%20White%20Cute%20Aesthetic%20Book%20Lovers%20Club%20Logo%20(1).jpg" alt="Sticker Pack">
+            <h3>Sticker Pack for Book Lovers</h3>
+            <p>Set of 5 unique stickers for book enthusiasts.</p>
+            <p class="price">$1.00</p>
+            <div class="stars">★★★★☆</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+        <!-- Wall Art Designs -->
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/Neutral%20modern%20shadow%20motivational%20quote%20good%20vibes%20only%20Instagram%20post.svg" alt="Wall Art 1">
+            <h3>Wall Art Print </h3>
+            <p>Inspirational quote with a one-line bee character.</p>
+            <p class="price">$2.00</p>
+            <div class="stars">★★★★★</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/White%20Minimalist%20Poster%20Mockups%20Instagram%20Post.jpg" alt="Wall Art 2">
+            <h3>Wall Art Print </h3>
+            <p>Minimalist quote art in one-line style.</p>
+            <p class="price">$2.00</p>
+            <div class="stars">★★★★☆</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/White%20Grey%20Minimalist%20Wall%20Art%20Photo%20Frame%20Mockup%20for%20Instagram%20Post.png" alt="Wall Art 3">
+            <h3>Wall Art Print </h3>
+            <p>Minimalist geometric print, mid-century modern style.</p>
+            <p class="price">$2.00</p>
+            <div class="stars">★★★★☆</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+    
+
+        <!-- Coloring Book -->
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/Colorful%20Farm%20Theme%20Coloring%20Book%20Cover.png" alt="Coloring Book">
+            <h3>Hello Spring Coloring Book</h3>
+            <p>Fun and simple coloring and word tracing pages for kids.</p>
+            <p class="price">$7.00</p>
+            <div class="stars">★★★★☆</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+        <!-- Notebook -->
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/blue%20white%20modern%20notebook%20a4%20document.png" alt="Notebook">
+            <h3>Notebook</h3>
+            <p>80-page notebook with art cover design.</p>
+            <p class="price">$6.99</p>
+            <div class="stars">★★★★★</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+        <!-- T-shirt Designs -->
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/Black%20and%20White%20Minimalist%20T-Shirt%20Mockup%20Pinterest%20Pin.png" alt="T-shirt Design 1">
+            <h3>Work Like a Captain, Play Like a Pirate</h3>
+            <p>Unique T-shirt with a fun and motivational pirate-themed print.</p>
+            <p class="price">$2.00</p>
+            <div class="stars">★★★★☆</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+        <div class="product-card">
+            <img src="file:///C:/Users/ACER/Downloads/White%20and%20Black%20Minimalist%20T%20Shirt%20Mockup%20Instagram%20Post.png" alt="T-shirt Design 2">
+            <h3>T-shirt Design #2</h3>
+            <p>Vibrant abstract art on black tee.</p>
+            <p class="price">$19.99</p>
+            <div class="stars">★★★★★</div>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+    </div>
+</div>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About Artify Store</h3>
+            <p>Your go-to digital hub for creative art, offering unique and high-quality digital products designed to spark your imagination and creativity.</p>
+        </div>
+        
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Shop</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" alt="Instagram"></a>
+                <a href="#"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-512.png" alt="linkedin"></a>
+                <a href="#"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Pinterest_colored_svg-512.png" alt="Pinterest"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Artify Store. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</div>
+</body>
